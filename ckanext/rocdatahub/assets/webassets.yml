@@ -1,0 +1,14 @@
+# rocdatahub-js:
+#   filter: rjsmin
+#   output: ckanext-rocdatahub/%(version)s-rocdatahub.js
+#   contents:
+#     - js/rocdatahub.js
+#   extra:
+#     preload:
+#       - base/main
+
+# rocdatahub-css:
+#   filter: cssrewrite
+#   output: ckanext-rocdatahub/%(version)s-rocdatahub.css
+#   contents:
+#     - css/rocdatahub.css

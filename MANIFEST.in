@@ -1,0 +1,5 @@
+include README.rst
+include LICENSE
+include requirements.txt
+recursive-include ckanext/rocdatahub *.html *.json *.js *.less *.css *.mo *.yml
+recursive-include ckanext/rocdatahub/migration *.ini *.py *.mako
