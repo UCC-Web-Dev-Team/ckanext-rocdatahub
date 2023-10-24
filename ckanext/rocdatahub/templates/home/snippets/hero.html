@@ -1,9 +1,16 @@
-<div class="p-5 mb-4 rounded-3 text-light">
-  <div class="py-5">
-    <h1 class="display-5 fw-bold">Regional Ocean & Coastal Data Hub</h1>
-    <p class="col-md-8 fs-4">Ocean data on social science, biological and physio-chemical</p>
-    {% block search %}
-      {% snippet 'home/snippets/custom_search.html' %}
-    {% endblock %}
+<div class="row">
+  <div class="col-6">
+    <div class="p-5 mb-4 rounded-3 text-light">
+      <div class="py-5">
+        <h1 class="display-5 fw-bold">Regional Ocean & Coastal Data Hub</h1>
+        <p class="col-md-8 fs-4">Ocean data on social science, biological and physio-chemical</p>
+        {% block search %}
+          {% snippet 'home/snippets/custom_search.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    {% snippet 'home/snippets/map.html' %}
   </div>
 </div>

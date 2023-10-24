@@ -1,24 +1,16 @@
+body{
+  background-color: #F9F9F9 !important;
+}
 .account-masthead {
-  background-color: #fff !important;
-}
-.account-masthead .account ul li {
-  border-left: 0px !important;
-}
-.account-masthead .account ul li a:hover {
-    color: #d9e7eb !important;
-    background-color: #114f80;
-    text-decoration: none;
-}
-.account-masthead .account ul li a {
-  color: #114f80 !important;
+  background-color: #123f66 !important;
 }
 .masthead,[role=main].main .container {
   background-color: #114f80 !important;
 }
-[role=main], .main .container {
+.hero-section {
   position: relative;
   background-color: #114f80 !important;
 }
 .site-footer {
   background-color: #0b3352 !important;
-}
+} 
