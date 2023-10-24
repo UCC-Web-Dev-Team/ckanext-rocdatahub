@@ -2,7 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
 
-# import ckanext.rocdatahub.cli as cli
+import ckanext.rocdatahub.cli as cli
 # import ckanext.rocdatahub.helpers as helpers
 import ckanext.rocdatahub.views as views
 from ckanext.rocdatahub.logic import (
@@ -46,8 +46,8 @@ class RocdatahubPlugin(plugins.SingletonPlugin):
 
     # IClick
 
-    # def get_commands(self):
-    #     return cli.get_commands()
+    def get_commands(self):
+        return cli.get_commands()
 
     # ITemplateHelpers
 

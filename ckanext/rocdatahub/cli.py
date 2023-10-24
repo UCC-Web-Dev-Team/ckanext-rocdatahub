@@ -14,21 +14,24 @@ import click
 branding = OrderedDict()
 branding["group"] = "collection"
 branding["Group"] = "Collection"
-branding["an organization"] = "a circle"
-branding["an Organization"] = "a Circle"
-branding["An organization"] = "A circle"
-branding["An Organization"] = "A Circle"
-branding["organization"] = "circle"
-branding["Organization"] = "Circle"
 
 
 preserve = [
-    "{organization}",
-    "organization_name",
     "group_name",
     "{group}",
 ]
 
+def replace_branding(msgid):
+    if isinstance(msgid, tuple):
+        return tuple([replace_branding(m) for m in list(msgid)])
+    else:
+        for pp in preserve:
+            msgid = msgid.replace(pp, pp.upper())
+        for bb in branding:
+            msgid = msgid.replace(bb, branding[bb])
+        for pp in preserve:
+            msgid = msgid.replace(pp.upper(), pp)
+        return msgid
 
 @click.group(short_help="rocdatahub CLI.")
 def rocdatahub():
