@@ -1,0 +1,119 @@
+<div class="content">
+    <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-1"><img src="/images/bio.svg" width="30" class="text-dark text-opacity-75"></div>
+          <div class="col-11"><h2 class="mb-3 text-dark text-opacity-75">Biological</h2></div>
+        </div>
+      </div>
+      <div class="col-4">
+        <a href="#" class="text-dark text-opacity-75 float-end fs-4 ms-3 fw-bold">View all</a>
+      </div>
+    </div>
+    <div class="row" id="bio-data"></div>
+
+    <div class="row mt-5 mb-3">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-1"><img src="/images/users.svg" width="30" class="text-dark text-opacity-75"></div>
+          <div class="col-11"><h2 class="mb-3 text-dark text-opacity-75">Social Science</h2></div>
+        </div>
+      </div>
+      <div class="col-4">
+        <a href="#" class="text-dark text-opacity-75 float-end fs-4 ms-3 fw-bold">View all</a>
+      </div>
+    </div>
+
+    <div class="row" id="social-data"></div>
+
+    <div class="row mt-5 mb-3">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-1">
+            <div class="rounded bg-blue-100 p-2"><img src="/images/flask.svg" width="30" class="text-dark text-opacity-75"></div>
+          </div>
+          <div class="col-11"><h2 class="mb-3 text-dark text-opacity-75">Physio Chemical</h2></div>
+        </div>
+      </div>
+      <div class="col-4">
+        <a href="#" class="text-dark text-opacity-75 float-end fs-4 ms-3 fw-bold">View all</a>
+      </div>
+    </div>
+
+    <div class="row" id="physio-data"></div>
+  </div>
+
+  {% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      // Social Science Data
+      axios.get('/api/3/action/group_show?id=978a6119-5e73-46d7-b721-7c3fb911d8d1&include_datasets=1&include_users=0')
+        .then(function (response) {
+          // handle success
+          document.getElementById('social-data').innerHTML += response.data.result.packages.map(item => {
+            return `<div class="col-3 mb-3">
+                <div class="card shadow-sm border border-light">
+                  <div class="card-body">
+                    <h3 class="card-title fs-3">${item.title}</h3>
+                    <p class="card-text text-truncate">
+                      ${item.notes}
+                    </p>
+                    <a href="/dataset/${item.name}" class="card-link">View dataset</a>
+                  </div>
+                </div>
+              </div>`
+          });
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+
+        // Biological Data
+      axios.get('/api/3/action/group_show?id=6746196a-12f0-4a34-a337-0adc1c1487bc&include_datasets=1&include_users=0')
+      .then(function (response) {
+        // handle success
+        document.getElementById('bio-data').innerHTML += response.data.result.packages.map(item => {
+          return `<div class="col-3 mb-3">
+              <div class="card shadow-sm border border-light">
+                <div class="card-body">
+                  <h3 class="card-title fs-3">${item.title}</h3>
+                  <p class="card-text text-truncate">
+                    ${item.notes}
+                  </p>
+                  <a href="/dataset/${item.name}" class="card-link">View dataset</a>
+                </div>
+              </div>
+            </div>`
+        });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+
+      // Physio Data
+      axios.get('/api/3/action/group_show?id=a15295c2-177f-497f-9b4e-f7f5cfc0dd21&include_datasets=1&include_users=0')
+      .then(function (response) {
+        // handle success
+        document.getElementById('physio-data').innerHTML += response.data.result.packages.map(item => {
+          return `<div class="col-3 mb-3">
+              <div class="card shadow-sm border border-light">
+                <div class="card-body">
+                  <h3 class="card-title fs-3">${item.title}</h3>
+                  <p class="card-text text-truncate">
+                    ${item.notes}
+                  </p>
+                  <a href="/dataset/${item.name}" class="card-link">View dataset</a>
+                </div>
+              </div>
+            </div>`
+        });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+
+    </script>
+  {% endblock %}

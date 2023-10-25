@@ -310,7 +310,7 @@ var simplemaps_worldmap_mapdata={
     GH: {
       hide: "no",
       name: "Ghana",
-      url: "https://google.com",
+      url: "/dataset",
       inactive: "no",
       zoomable: "yes",
       description: " ",

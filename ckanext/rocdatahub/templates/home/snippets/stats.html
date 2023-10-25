@@ -2,7 +2,7 @@
     <div class="header pb-8 mb-5 pt-3 pt-md-8">
         <h2 class="mb-5">DataHub CCM statistics</h2>
         <div class="header-body">
-          <div class="row gap-y-2">
+          <div class="row gap-y-2" id="stats">
             <div class="col-xl-4 col-lg-6 mb-3">
               <div class="card card-stats mb-4 mb-xl-0 shadow-sm border border-light">
                 <div class="card-body">
@@ -29,47 +29,36 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-4 col-lg-6 mb-3">
-              <div class="card card-stats mb-4 mb-xl-0 shadow-sm border border-light">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-auto">
-                      <h5 class="card-title text-muted mb-0">Biological Data</h5>
-                      <span class="h2 font-weight-bold mb-0">2,356</span>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 mb-3">
-              <div class="card card-stats mb-4 mb-xl-0 shadow-sm border border-light">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-auto">
-                      <h5 class="card-title text-muted mb-0">Social Science Data</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 mb-3">
-              <div class="card card-stats mb-4 mb-xl-0 shadow-sm border border-light">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-auto">
-                      <h5 class="card-title text-muted mb-0">Physio-chemical Data</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65</span>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
           </div>
         </div>
     </div>
     <!-- Page content -->
   </div>
+  {% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      axios.get('/api/3/action/group_list?all_fields=1')
+        .then(function (response) {
+          // handle success
+          document.getElementById('stats').innerHTML += response.data.result.map(item => {
+            return `<div class="col-xl-4 col-lg-6 mb-3">
+              <div class="card card-stats mb-4 mb-xl-0 shadow-sm border border-light">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-auto">
+                      <h5 class="card-title text-muted mb-0">${item.display_name} Data</h5>
+                      <span class="h2 font-weight-bold mb-0">${item.package_count}</span>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>`
+          });
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+    </script>
+  {% endblock %}

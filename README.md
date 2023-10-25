@@ -1,4 +1,4 @@
-[![Tests](https://github.com//ckanext-rocdatahub/workflows/Tests/badge.svg?branch=main)](https://github.com//ckanext-rocdatahub/actions)
+[![Tests](https://github.com/UCC-Web-Dev-Team/ckanext-rocdatahub/workflows/Tests/badge.svg?branch=main)](https://github.com/UCC-Web-Dev-Team/ckanext-rocdatahub/actions)
 
 # ckanext-rocdatahub
 
@@ -43,7 +43,7 @@ To install ckanext-rocdatahub:
 
 2. Clone the source and install it on the virtualenv
 
-    git clone https://github.com//ckanext-rocdatahub.git
+    git clone https://github.com/UCC-Web-Dev-Team/ckanext-rocdatahub.git
     cd ckanext-rocdatahub
     pip install -e .
 	pip install -r requirements.txt
@@ -73,7 +73,7 @@ None at present
 To install ckanext-rocdatahub for development, activate your CKAN virtualenv and
 do:
 
-    git clone https://github.com//ckanext-rocdatahub.git
+    git clone https://github.com/UCC-Web-Dev-Team/ckanext-rocdatahub.git
     cd ckanext-rocdatahub
     python setup.py develop
     pip install -r dev-requirements.txt
