@@ -4,28 +4,19 @@
         <div class="header-body">
           <div class="row gap-y-2" id="stats">
             <div class="col-xl-4 col-lg-6 mb-3">
-              <div class="card card-stats mb-4 mb-xl-0 shadow-sm border border-light">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-auto">
-                      <h5 class="card-title text-muted mb-0">Countries Covered</h5>
-                      <span class="h2 font-weight-bold mb-0">1</span>
-                    </div>
-                  </div>
-                  
+              <div class="card border-0 border-bottom border-primary shadow-sm">
+                <div class="card-body text-center p-4 p-xxl-4">
+                  <h3 class="display-3 fw-bold mb-2">1</h3>
+                  <p class="fs-3 mb-0 text-secondary">Countries Covered</p>
                 </div>
               </div>
+              
             </div>
             <div class="col-xl-4 col-lg-6 mb-3">
-              <div class="card card-stats mb-4 mb-xl-0 shadow-sm border border-light">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-auto">
-                      <h5 class="card-title text-muted mb-0">Ecosystems Covered</h5>
-                      <span class="h2 font-weight-bold mb-0">1</span>
-                    </div>
-                  </div>
-                  
+              <div class="card border-0 border-bottom border-primary shadow-sm">
+                <div class="card-body text-center p-4 p-xxl-4">
+                  <h3 class="display-3 fw-bold mb-2">1</h3>
+                  <p class="fs-3 mb-0 text-secondary">Ecosystems Covered</p>
                 </div>
               </div>
             </div>
@@ -42,19 +33,17 @@
           // handle success
           document.getElementById('stats').innerHTML += response.data.result.map(item => {
             return `<div class="col-xl-4 col-lg-6 mb-3">
-              <div class="card card-stats mb-4 mb-xl-0 shadow-sm border border-light">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-auto">
-                      <h5 class="card-title text-muted mb-0">${item.display_name} Data</h5>
-                      <span class="h2 font-weight-bold mb-0">${item.package_count}</span>
-                    </div>
+              <a href="/group/${item.name}" class="text-decoration-none">
+                <div class="card border-0 border-bottom border-primary shadow-sm">
+                  <div class="card-body text-center p-4 p-xxl-4">
+                    
+                    <h3 class="display-3 fw-bold mb-2">${item.package_count}</h3>
+                    <p class="fs-3 mb-0 text-secondary">${item.display_name} Data</p>
                   </div>
-                  
                 </div>
-              </div>
-            </div>`
-          });
+              </a>
+            </div>`;
+          }).join("");
         })
         .catch(function (error) {
           // handle error

@@ -14,3 +14,10 @@ body{
 .site-footer {
   background-color: #0b3352 !important;
 } 
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
