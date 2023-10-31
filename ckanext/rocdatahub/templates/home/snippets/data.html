@@ -12,8 +12,8 @@
               return `<div class="row">
                 <div class="col-8">
                   <div class="row">
-                    <div class="col-1"><img src="/images/${item.name}.svg" width="30" class="text-dark text-opacity-75"></div>
-                    <div class="col-11"><h2 class="mb-3 text-dark text-opacity-75">${item.display_name}</h2></div>
+                    <div class="col-2 col-lg-1"><img src="/images/${item.name}.svg" width="25" class="text-dark text-opacity-75"></div>
+                    <div class="col-10 col-lg-11"><h2 class="mb-3 text-dark text-opacity-75">${item.display_name}</h2></div>
                   </div>
                 </div>
                 <div class="col-4">
@@ -35,10 +35,10 @@
           .then(function (response) {
             // handle success
             document.getElementById(`${group_name}-data`).innerHTML += response.data.result.packages.map(item => {
-              return `<div class="col-4 mb-3">
+              return `<div class="col-lg-4 mb-3">
                 <div class="card shadow-sm border border-light p-2">
                   <div class="card-body">
-                    <a href="/dataset/${item.name}" class="card-link"><h3 class="card-title fs-3 pb-2">${item.title}</h3></a>
+                    <a href="/dataset/${item.name}" class="card-link"><h3 class="card-title fs-lg-3 pb-2">${item.title}</h3></a>
                     <p class="card-text truncate-text">
                       ${item.notes}
                     </p>

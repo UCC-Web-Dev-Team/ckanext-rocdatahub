@@ -3,7 +3,7 @@
         <h2 class="mb-5">Statistics</h2>
         <div class="header-body">
           <div class="row gap-y-2" id="stats">
-            <div class="col-xl-4 col-lg-6 mb-3">
+            <div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
               <div class="card border-0 border-bottom border-primary shadow-sm">
                 <div class="card-body text-center p-4 p-xxl-4">
                   <h3 class="display-3 fw-bold mb-2">1</h3>
@@ -12,7 +12,7 @@
               </div>
               
             </div>
-            <div class="col-xl-4 col-lg-6 mb-3">
+            <div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
               <div class="card border-0 border-bottom border-primary shadow-sm">
                 <div class="card-body text-center p-4 p-xxl-4">
                   <h3 class="display-3 fw-bold mb-2">1</h3>
@@ -32,7 +32,7 @@
         .then(function (response) {
           // handle success
           document.getElementById('stats').innerHTML += response.data.result.map(item => {
-            return `<div class="col-xl-4 col-lg-6 mb-3">
+            return `<div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
               <a href="/group/${item.name}" class="text-decoration-none">
                 <div class="card border-0 border-bottom border-primary shadow-sm">
                   <div class="card-body text-center p-4 p-xxl-4">
