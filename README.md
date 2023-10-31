@@ -20,6 +20,7 @@ Compatibility with core CKAN versions:
 | 2.7             | not tested    |
 | 2.8             | not tested    |
 | 2.9             | not tested    |
+| 2.10            | yes           |
 
 Suggested values:
 
@@ -115,7 +116,7 @@ If ckanext-rocdatahub should be available on PyPI you can follow these steps to 
    the `setup.py` file. For example if the version number in `setup.py` is
    0.0.1 then do:
 
-       git tag 0.0.3
+       git tag 0.0.4
        git push --tags
 
 ## License

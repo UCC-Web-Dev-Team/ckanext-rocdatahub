@@ -6,19 +6,15 @@
   <li class="active">{% link_for _('Map'), named_route='rocdatahub.map' %}</li>
 {% endblock %}
 
-{#{% block primary %}
+{% block primary %}
   <article class="module" role="main">
     <div class="module-content">
       {% block about %}
-        {% if g.site_about %}
-          {{ h.render_markdown(g.site_about) }}
-        {% else %}
-          <h1 class="page-heading">{{ _('Map') }}</h1>
-          {% snippet 'home/snippets/about_text.html' %}
-        {% endif %}
+        <h1 class="page-heading">{{ _('Map') }}</h1>
+        {% snippet 'home/snippets/map.html' %}
       {% endblock %}
     </div>
   </article>
 {% endblock %}
 
-{% block secondary %}{% endblock %}#}
+{% block secondary %}{% endblock %}
