@@ -15,6 +15,8 @@
   {% endif %}
 {% endblock %}
 
+{% block primary %}
+<div class="primary col-md-12 col-xs-12 py-3" role="main">
 {% block primary_content_inner %}
   <h1 class="hide-heading">{{ h.humanize_entity_type('group', group_type, 'page title') or _('Data Categories') }}</h1>
   {% block groups_search_form %}
@@ -38,7 +40,11 @@
     {{ page.pager(q=q or '', sort=sort_by_selected or '') }}
   {% endblock %}
 {% endblock %}
-
-{% block secondary_content %}
-  {% snippet "group/snippets/helper.html", group_type=group_type %}
+    </div>
 {% endblock %}
+
+{#{% block secondary_content %}
+  {% snippet "group/snippets/helper.html", group_type=group_type %}
+{% endblock %}#}
+
+{% block secondary %}{% endblock %}
