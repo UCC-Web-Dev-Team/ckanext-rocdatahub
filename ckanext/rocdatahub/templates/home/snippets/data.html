@@ -34,8 +34,8 @@
         axios.get(`/api/3/action/group_show?id=${group_id}&include_datasets=1&include_users=0`)
           .then(function (response) {
             // handle success
-            document.getElementById(`${group_name}-data`).innerHTML += response.data.result.packages.map(item => {
-              return `<div class="col-lg-4 mb-3">
+            document.getElementById(`${group_name}-data`).innerHTML += response.data.result.packages.map((item, index) => index < 4 && (
+              `<div class="col-lg-4 mb-3">
                 <div class="card shadow-sm border border-light p-2">
                   <div class="card-body">
                     <a href="/dataset/${item.name}" class="card-link"><h3 class="card-title fs-lg-3 pb-2">${item.title}</h3></a>
@@ -46,7 +46,7 @@
                   </div>
                 </div>
               </div>`
-            }).join("");
+            )).join("");
           })
           .catch(function (error) {
             // handle error
