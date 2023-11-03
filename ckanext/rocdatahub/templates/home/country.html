@@ -1,0 +1,21 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _(country) }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active" style="text-transform: capitalize;">{{ _(country) }}</li>
+  {# <li class="active" style="text-transform: capitalize;">{% link_for _(country), named_route='rocdatahub.ecosystem' %}</li> #}
+{% endblock %}
+
+{% block primary %}
+  <article class="module" role="main">
+    <div class="module-content">
+      {% block about %}
+          <h1 class="page-heading" style="text-transform: capitalize;">{{ _(country) }}</h1>
+          {% snippet 'home/snippets/country.html' %}
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

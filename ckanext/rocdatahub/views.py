@@ -16,9 +16,9 @@ def map():
 def faqs():
     return render(u'home/faqs.html')
 
-@rocdatahub.route(u'/countries')
-def countries():
-    return render(u'home/countries.html')
+@rocdatahub.route(u'/countries/<country>')
+def countries(country):
+    return render(u'home/country.html', {'country': country})
 # def page():
 #     return "Hello, rocdatahub!"
 
