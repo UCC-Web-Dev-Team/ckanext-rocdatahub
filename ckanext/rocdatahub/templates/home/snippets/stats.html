@@ -15,7 +15,7 @@
             <div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
               <div class="card border-0 border-bottom border-primary shadow-sm">
                 <div class="card-body text-center p-4 p-xxl-4">
-                  <h3 class="display-3 fw-bold mb-2">1</h3>
+                  <h3 class="display-3 fw-bold mb-2">4</h3>
                   <p class="fs-3 mb-0 text-secondary">Ecosystems Covered</p>
                 </div>
               </div>
@@ -30,8 +30,10 @@
     <script>
       axios.get('/api/3/action/group_list?all_fields=1')
         .then(function (response) {
+          let totalDatasets = 0;
           // handle success
           document.getElementById('stats').innerHTML += response.data.result.map(item => {
+            totalDatasets += item.package_count;
             return `<div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
               <a href="/group/${item.name}" class="text-decoration-none">
                 <div class="card border-0 border-bottom border-primary shadow-sm">
@@ -44,10 +46,20 @@
               </a>
             </div>`;
           }).join("");
+
+          document.getElementById('stats').innerHTML += `<div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
+            <div class="card border-0 border-bottom border-primary shadow-sm">
+              <div class="card-body text-center p-4 p-xxl-4">
+                <h3 class="display-3 fw-bold mb-2">${totalDatasets}</h3>
+                <p class="fs-3 mb-0 text-secondary">Total Datasets</p>
+              </div>
+            </div>
+          </div>`
         })
         .catch(function (error) {
           // handle error
           console.log(error);
         });
+        
     </script>
   {% endblock %}
