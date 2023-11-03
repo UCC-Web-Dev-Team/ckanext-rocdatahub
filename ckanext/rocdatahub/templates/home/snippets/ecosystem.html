@@ -7,6 +7,7 @@
                     <img src="/images/freshwater.jpg" class="card-img-top" alt="Freshwater">
                     <div class="card-body">
                         <h5 class="card-title fs-2">Freshwater</h5>
+                        <p class="fs-4" id="freshwater"></p>
                     </div>
                 </a>
             </div>
@@ -16,6 +17,7 @@
                     <img src="/images/brackishwater.jpg" class="card-img-top" alt="Brackishwater">
                     <div class="card-body">
                         <h5 class="card-title fs-2">Brackishwater</h5>
+                        <p class="fs-4" id="brackishwater"></p>
                     </div>
                 </a>
             </div>
@@ -25,6 +27,7 @@
                     <img src="/images/marine.jpg" class="card-img-top" alt="Marine">
                     <div class="card-body">
                         <h5 class="card-title fs-2">Marine</h5>
+                        <p class="fs-4" id="marine"></p>
                     </div>
                 </a>
             </div>
@@ -34,10 +37,52 @@
                     <img src="/images/wetland.jpg" class="card-img-top" alt="Wetland">
                     <div class="card-body">
                         <h5 class="card-title fs-2">Wetland</h5>
+                        <p class="fs-4" id="wetland"></p>
                     </div>
                 </a>
             </div>
         </div>
     </div>
-
 {% endtrans %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('/api/3/action/package_search?fq=tags:Freshwater')
+        .then(function (response) {
+            // handle success
+            document.getElementById('freshwater').innerHTML = response.data.result.count+ " Dataset(s)";
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+    axios.get('/api/3/action/package_search?fq=tags:Brackishwater')
+        .then(function (response) {
+            // handle success
+            document.getElementById('brackishwater').innerHTML = response.data.result.count+ " Dataset(s)";
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+    axios.get('/api/3/action/package_search?fq=tags:Marine')
+        .then(function (response) {
+            // handle success
+            document.getElementById('marine').innerHTML = response.data.result.count+ " Dataset(s)";
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+    axios.get('/api/3/action/package_search?fq=tags:Wetland')
+        .then(function (response) {
+            // handle success
+            document.getElementById('wetland').innerHTML = response.data.result.count+ " Dataset(s)";
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+
+</script>
+{% endblock %}
