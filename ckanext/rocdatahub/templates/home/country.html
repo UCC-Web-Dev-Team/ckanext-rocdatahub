@@ -3,8 +3,8 @@
 {% block subtitle %}{{ _(country) }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active" style="text-transform: capitalize;">{{ _(country) }}</li>
-  {# <li class="active" style="text-transform: capitalize;">{% link_for _(country), named_route='rocdatahub.ecosystem' %}</li> #}
+<li class="active">{% link_for _('Countries Covered'), named_route='rocdatahub.countries' %}</li>
+  <li class="active" style="text-transform: capitalize;">{% link_for _(country), named_route='rocdatahub.country',country=_(country) %}</li>
 {% endblock %}
 
 {% block primary %}
