@@ -1,9 +1,9 @@
 {% trans %}
-<h2 class="mt-5">Fish Production by Ghanaian Artisanal Fishers</h2>
+<h3 class="mt-5 fs-3 fw-light">Fish Production by Ghanaian Artisanal Fishers</h3>
 <div class="mt-4">
     <div id="fish-production"></div>
 </div>
-<h2 class="mt-5">Changes in Surface Temperature of Ghana's Waters</h2>
+<h3 class="mt-5 fs-3 fw-light">Changes in Surface Temperature of Ghana's Waters</h3>
 <div class="mt-4">
     <div id="anomaly-chart"></div>
 </div>
@@ -21,7 +21,40 @@
         }],
         chart: {
             type: 'bar',
-            height: 350
+            height: 350,
+            toolbar: {
+                show: true,
+                offsetX: 0,
+                offsetY: 0,
+                tools: {
+                    download: false,
+                    selection: true,
+                    zoom: true,
+                    zoomin: true,
+                    zoomout: true,
+                    pan: true,
+                    reset: true | '<img src="/static/icons/reset.png" width="20">',
+                    customIcons: []
+                },
+                export: {
+                    csv: {
+                        filename: undefined,
+                        columnDelimiter: ',',
+                        headerCategory: 'category',
+                        headerValue: 'value',
+                        dateFormatter(timestamp) {
+                            return new Date(timestamp).toDateString()
+                        }
+                    },
+                    svg: {
+                        filename: undefined,
+                    },
+                    png: {
+                        filename: undefined,
+                    }
+                },
+                autoSelected: 'zoom'
+            },
         },
         plotOptions: {
             bar: {
@@ -69,19 +102,61 @@
             }],
             chart: {
                 type: 'bar',
-                height: 350
+                height: 450,
+                 toolbar: {
+                    show: true,
+                    offsetX: 0,
+                    offsetY: 0,
+                    tools: {
+                        download: false,
+                        selection: true,
+                        zoom: true,
+                        zoomin: true,
+                        zoomout: true,
+                        pan: true,
+                        reset: true | '<img src="/static/icons/reset.png" width="20">',
+                        customIcons: []
+                    },
+                    export: {
+                        csv: {
+                            filename: undefined,
+                            columnDelimiter: ',',
+                            headerCategory: 'category',
+                            headerValue: 'value',
+                            dateFormatter(timestamp) {
+                                return new Date(timestamp).toDateString()
+                            }
+                        },
+                        svg: {
+                            filename: undefined,
+                        },
+                        png: {
+                            filename: undefined,
+                        }
+                    },
+                    autoSelected: 'zoom'
+                },
+                legend:{
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'top',
+                    labels: {
+                        'name':'Temperature Anomaly',
+                        useSeriesColors: true
+                    },
+                },
             },
             plotOptions: {
                 bar: {
                     colors: {
                         ranges: [{
-                            from: -5.000000000,
-                            to: -0.000000000,
-                            color: '#F15B46'
-                        }, {
-                            from: 5.000000000,
-                            to: 0.000000000,
-                            color: '#FEB019'
+                            from: -2.000000000,
+                            to: -1.500000000,
+                            color: '#008FFB'
+                        },{
+                            from: 0.000000000,
+                            to: 2.000000000,
+                            color: '#FF4560'
                         }]
                     },
                     columnWidth: '80%',
