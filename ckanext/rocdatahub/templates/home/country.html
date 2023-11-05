@@ -12,6 +12,7 @@
     <div class="module-content">
       {% block about %}
           <h1 class="page-heading" style="text-transform: capitalize;">{{ _(country) }}</h1>
+          {% snippet 'home/snippets/country_chat.html' %}
           {% snippet 'home/snippets/country.html' %}
       {% endblock %}
     </div>
