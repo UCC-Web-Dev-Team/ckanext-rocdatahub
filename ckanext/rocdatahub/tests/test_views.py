@@ -11,6 +11,6 @@ import ckan.plugins.toolkit as tk
 @pytest.mark.ckan_config("ckan.plugins", "rocdatahub")
 @pytest.mark.usefixtures("with_plugins")
 def test_rocdatahub_blueprint(app, reset_db):
-    resp = app.get(tk.h.url_for("rocdatahub.page"))
+    resp = app.get(tk.h.url_for("rocdatahub.ecosystem"))
     assert resp.status_code == 200
-    assert resp.body == "Hello, rocdatahub!"
+    assert resp.body == "Freshwater"
