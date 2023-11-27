@@ -3,20 +3,20 @@
         <h2 class="mb-5">Statistics</h2>
         <div class="header-body">
           <div class="row gap-y-2" id="stats">
-            <div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
+            <div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
               <div class="card border-0 border-bottom border-primary shadow-sm">
                 <div class="card-body text-center p-4 p-xxl-4">
                   <h3 class="display-3 fw-bold mb-2">1</h3>
-                  <p class="fs-3 mb-0 text-secondary">Countries Covered</p>
+                  <p class="fs-6 mb-0 text-secondary">Countries Covered</p>
                 </div>
               </div>
               
             </div>
-            <div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
+            <div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
               <div class="card border-0 border-bottom border-primary shadow-sm">
                 <div class="card-body text-center p-4 p-xxl-4">
                   <h3 class="display-3 fw-bold mb-2">4</h3>
-                  <p class="fs-3 mb-0 text-secondary">Ecosystems Covered</p>
+                  <p class="fs-6 mb-0 text-secondary">Ecosystems Covered</p>
                 </div>
               </div>
             </div>
@@ -34,24 +34,24 @@
           // handle success
           document.getElementById('stats').innerHTML += response.data.result.map(item => {
             totalDatasets += item.package_count;
-            return `<div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
+            return `<div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
               <a href="/group/${item.name}" class="text-decoration-none">
                 <div class="card border-0 border-bottom border-primary shadow-sm">
                   <div class="card-body text-center p-4 p-xxl-4">
                     
                     <h3 class="display-3 fw-bold mb-2">${item.package_count}</h3>
-                    <p class="fs-3 mb-0 text-secondary">${item.display_name} Data</p>
+                    <p class="fs-6 mb-0 text-secondary">${item.display_name} Data</p>
                   </div>
                 </div>
               </a>
             </div>`;
           }).join("");
 
-          document.getElementById('stats').innerHTML += `<div class="col-xl-4 col-lg-6 col-sm-6 mb-3">
+          document.getElementById('stats').innerHTML += `<div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
             <div class="card border-0 border-bottom border-primary shadow-sm">
               <div class="card-body text-center p-4 p-xxl-4">
                 <h3 class="display-3 fw-bold mb-2">${totalDatasets}</h3>
-                <p class="fs-3 mb-0 text-secondary">Total Datasets</p>
+                <p class="fs-6 mb-0 text-secondary">Total Datasets</p>
               </div>
             </div>
           </div>`
