@@ -116,7 +116,7 @@ If ckanext-rocdatahub should be available on PyPI you can follow these steps to 
    the `setup.py` file. For example if the version number in `setup.py` is
    0.0.1 then do:
 
-       git tag 0.0.10
+       git tag 0.0.15
        git push --tags
 
 ## License
