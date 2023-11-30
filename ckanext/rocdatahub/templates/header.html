@@ -35,14 +35,23 @@
                         {{ h.build_nav_main(
                             ('home.about', _('About')),
                             (org_type ~ '.index', h.humanize_entity_type('organization', org_type, 'main nav') or _('Organizations'), ['organization']),
-                            ('rocdatahub.countries', _('Countries')),
-                            (group_type ~ '.index', h.humanize_entity_type('group', group_type, 'main nav') or _('Categories'), ['group']),
-                            ('rocdatahub.ecosystem', _('Ecosystems')),
-                            ('rocdatahub.map', _('Map')),
+                            
+                            ('rocdatahub.ecosystem', _('Datasets')),
+                            ('rocdatahub.map', _('Countries')),
                             ('rocdatahub.faqs', _('FAQs')),
                         ) }}
                 {% endblock %}
         </ul>
+
+        {# {{ h.build_nav_main(
+            ('home.about', _('About')),
+            (org_type ~ '.index', h.humanize_entity_type('organization', org_type, 'main nav') or _('Organizations'), ['organization']),
+            ('rocdatahub.countries', _('Countries')),
+            (group_type ~ '.index', h.humanize_entity_type('group', group_type, 'main nav') or _('Categories'), ['group']),
+            ('rocdatahub.ecosystem', _('Ecosystems')),
+            ('rocdatahub.map', _('Map')),
+            ('rocdatahub.faqs', _('FAQs')),
+        ) }}#}
 
         {% endblock %}
         {% block header_site_search %}
