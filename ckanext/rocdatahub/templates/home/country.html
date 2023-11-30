@@ -1,22 +1,35 @@
-{% extends "page.html" %}
-
-{% block subtitle %}{{ _(country) }}{% endblock %}
-
-{% block breadcrumb_content %}
-<li class="active">{% link_for _('Countries Covered'), named_route='rocdatahub.countries' %}</li>
-  <li class="active" style="text-transform: capitalize;">{% link_for _(country), named_route='rocdatahub.country',country=_(country) %}</li>
-{% endblock %}
-
-{% block primary %}
-  <article class="module" role="main">
-    <div class="module-content">
-      {% block about %}
-          <h1 class="page-heading" style="text-transform: capitalize;">{{ _(country) }}</h1>
-          {% snippet 'home/snippets/country_chat.html' %}
-          {% snippet 'home/snippets/country.html' %}
-      {% endblock %}
-    </div>
-  </article>
-{% endblock %}
-
-{% block secondary %}{% endblock %}
+{% extends "page.html" %} {% block subtitle %}{{ _(country) }}{% endblock %} {%
+block breadcrumb_content %}
+<li class="active">
+  {% link_for _('Countries Covered'), named_route='rocdatahub.countries' %}
+</li>
+<li class="active" style="text-transform: capitalize">
+  {% link_for _(country), named_route='rocdatahub.country',country=_(country) %}
+</li>
+{% endblock %} {% block primary %}
+<article class="module" role="main">
+  <div class="module-content">
+    {% block about %}
+    <h1 class="page-heading" style="text-transform: capitalize">
+      {{ _(country) }}
+    </h1>
+    <ul class="nav mb-5">
+      <li class="nav-item">
+        <a class="nav-link" href="/country/ghana#profile">Country profile  </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/country/ghana#fisheries-production">Fisheries production</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/country/ghana#sea-surface-temperature">Sea surface temperature anomaly (climate change)</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/country/ghana#geolocation-datasets">Geolocation of datasets </a>
+      </li>
+    </ul>
+    {% snippet 'home/snippets/ghana.html' %} {% snippet
+    'home/snippets/country_chat.html' %} {% snippet 'home/snippets/country.html'
+    %} {% endblock %}
+  </div>
+</article>
+{% endblock %} {% block secondary %}{% endblock %}

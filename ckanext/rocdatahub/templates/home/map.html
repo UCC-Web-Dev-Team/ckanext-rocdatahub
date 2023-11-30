@@ -1,16 +1,18 @@
 {% extends "page.html" %}
 
-{% block subtitle %}{{ _('Map') }}{% endblock %}
+{% block subtitle %}{{ _('Map highlighting African countries covered by the hub') }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <li class="active">{% link_for _('Map'), named_route='rocdatahub.map' %}</li>
+  <li class="active">{% link_for _('Countries'), named_route='rocdatahub.map' %}</li>
 {% endblock %}
 
 {% block primary %}
   <article class="module" role="main">
     <div class="module-content">
       {% block about %}
-        <h1 class="page-heading">{{ _('Map') }}</h1>
+        <h1 class="page-heading">{{ _('Map highlighting African countries covered by the hub') }}</h1>
+        {# <p>Map highlighting African countries covered by the hub</p> #}
+        <p>Click on a country to search datasets </p>
         {% snippet 'home/snippets/map.html' %}
       {% endblock %}
     </div>

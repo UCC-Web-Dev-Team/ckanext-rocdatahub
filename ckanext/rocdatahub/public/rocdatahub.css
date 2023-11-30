@@ -50,3 +50,20 @@ small {
   bottom: 0;
   margin-bottom: -15px;
 }
+
+.media {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.media-body {
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.mr-3,
+.mx-3 {
+  margin-right: 1rem !important;
+}

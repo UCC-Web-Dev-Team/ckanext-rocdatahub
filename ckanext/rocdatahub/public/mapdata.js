@@ -81,7 +81,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Burkina Faso",
       color: "#6f6f6f"
     },
@@ -97,7 +97,7 @@ var simplemaps_worldmap_mapdata={
       name: "Benin",
       description: " ",
       color: "#6f6f6f",
-      zoomable: "yes"
+      zoomable: "no"
     },
     BW: {
       inactive: "no",
@@ -133,7 +133,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Ivory Coast",
       color: "#6f6f6f"
     },
@@ -177,7 +177,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Cape Verde",
       color: "#6f6f6f"
     },
@@ -312,7 +312,7 @@ var simplemaps_worldmap_mapdata={
       name: "Ghana",
       url: "/country/ghana",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       description: " ",
       color: "#114f80"
     },
@@ -326,7 +326,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "The Gambia",
       color: "#6f6f6f"
     },
@@ -334,7 +334,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Guinea",
       color: "#6f6f6f"
     },
@@ -366,7 +366,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Guinea Bissau",
       color: "#6f6f6f"
     },
@@ -530,7 +530,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Liberia",
       color: "#6f6f6f"
     },
@@ -598,7 +598,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Mali",
       color: "#6f6f6f"
     },
@@ -618,7 +618,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Mauritania",
       color: "#6f6f6f"
     },
@@ -662,7 +662,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Niger",
       color: "#6f6f6f"
     },
@@ -670,7 +670,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Nigeria",
       color: "#6f6f6f"
     },
@@ -834,7 +834,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Sierra Leone",
       color: "#6f6f6f"
     },
@@ -842,7 +842,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Senegal",
       color: "#6f6f6f"
     },
@@ -892,7 +892,7 @@ var simplemaps_worldmap_mapdata={
       hide: "no",
       description: " ",
       inactive: "no",
-      zoomable: "yes",
+      zoomable: "no",
       name: "Togo",
       color: "#6f6f6f"
     },
