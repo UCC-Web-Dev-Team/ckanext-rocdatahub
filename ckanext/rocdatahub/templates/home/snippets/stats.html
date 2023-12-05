@@ -1,40 +1,44 @@
 <div class="main-content">
-    <div class="header pb-8 mb-5 pt-3 pt-md-8">
-        <h2 class="mb-5">Statistics</h2>
-        <div class="header-body">
-          <div class="row gap-y-2 text-nowrap" id="stats">
-            <div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
-              <div class="card border-0 border-bottom border-primary shadow-sm">
-                <div class="card-body text-center p-4 p-xxl-4">
-                  <h3 class="display-3 fw-bold mb-2">1</h3>
-                  <p class="fs-6 mb-0 text-secondary">Countries Covered</p>
-                </div>
-              </div>
-              
+  <div class="header pb-8 mb-5 pt-3 pt-md-8">
+    <h2 class="mb-5">Statistics</h2>
+    <div class="header-body">
+      <div class="row gap-y-2 text-nowrap" id="stats">
+        <div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
+          <a
+            href="/maps"
+            class="card border-0 border-bottom border-primary shadow-sm"
+          >
+            <div class="card-body text-center p-4 p-xxl-4">
+              <h3 class="display-3 fw-bold mb-2">1</h3>
+              <p class="fs-6 mb-0 text-secondary">Countries Covered</p>
             </div>
-            <div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
-              <div class="card border-0 border-bottom border-primary shadow-sm">
-                <div class="card-body text-center p-4 p-xxl-4">
-                  <h3 class="display-3 fw-bold mb-2">4</h3>
-                  <p class="fs-6 mb-0 text-secondary">Ecosystems Covered</p>
-                </div>
-              </div>
+          </a>
+        </div>
+        <a href="/dataset" class="col-xl-2 col-lg-6 col-sm-6 mb-3">
+          <div class="card border-0 border-bottom border-primary shadow-sm">
+            <div class="card-body text-center p-4 p-xxl-4">
+              <h3 class="display-3 fw-bold mb-2">4</h3>
+              <p class="fs-6 mb-0 text-secondary">Ecosystems Covered</p>
             </div>
           </div>
-        </div>
+        </a>
+      </div>
     </div>
-    <!-- Page content -->
   </div>
-  {% block scripts %}
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-      axios.get('/api/3/action/group_list?all_fields=1')
-        .then(function (response) {
-          let totalDatasets = 0;
-          // handle success
-          document.getElementById('stats').innerHTML += response.data.result.map(item => {
-            totalDatasets += item.package_count;
-            return `<div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
+  <!-- Page content -->
+</div>
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  axios
+    .get("/api/3/action/group_list?all_fields=1")
+    .then(function (response) {
+      let totalDatasets = 0;
+      // handle success
+      document.getElementById("stats").innerHTML += response.data.result
+        .map((item) => {
+          totalDatasets += item.package_count;
+          return `<div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
               <a href="/group/${item.name}" class="text-decoration-none">
                 <div class="card border-0 border-bottom border-primary shadow-sm">
                   <div class="card-body text-center p-4 p-xxl-4">
@@ -45,21 +49,23 @@
                 </div>
               </a>
             </div>`;
-          }).join("");
+        })
+        .join("");
 
-          document.getElementById('stats').innerHTML += `<div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
+      document.getElementById(
+        "stats"
+      ).innerHTML += `<div class="col-xl-2 col-lg-6 col-sm-6 mb-3">
             <div class="card border-0 border-bottom border-primary shadow-sm">
               <div class="card-body text-center p-4 p-xxl-4">
                 <h3 class="display-3 fw-bold mb-2">${totalDatasets}</h3>
                 <p class="fs-6 mb-0 text-secondary">Total Datasets</p>
               </div>
             </div>
-          </div>`
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
-        
-    </script>
-  {% endblock %}
+          </div>`;
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+</script>
+{% endblock %}
