@@ -1,7 +1,7 @@
 <div class="content" id="data-content"></div>
 
   {% block scripts %}
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script async defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       function getDatasetByGroup() {
         axios.get('/api/3/action/group_list?all_fields=1')
