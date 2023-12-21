@@ -205,6 +205,9 @@
         {% endblock %}
       </section>
     {% endif %}
+    {% if pkg.doi %}
+        {% snippet "doi/snippets/resource_citation.html", pkg_dict=pkg, res=res %}
+    {% endif %}
   {% endblock %}
 {% endblock %}
 

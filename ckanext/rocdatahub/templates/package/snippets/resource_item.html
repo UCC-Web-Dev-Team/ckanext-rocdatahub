@@ -73,11 +73,87 @@
       {% endblock %}
     </ul>
 
-    <a href="#" class="btn btn-secondary ms-3" type="button" aria-expanded="false">
+    <a href="#" class="btn btn-secondary ms-3" id="requestData" type="button" aria-expanded="false" data-id="{{ res.id }}">
         <i class="fa fa-database"></i>
         {{ _('Request Data') }}
       </a>
   </div>
+
+  <dialog id="favDialog">
+    <form>
+      <p>
+        Are you sure you want to request data for this resource?
+      </p>
+      <div>
+        <button value="cancel" class="btn btn-danger" formmethod="dialog">Cancel</button>
+        <button id="confirmBtn" class="btn btn-primary" value="default">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+  
   {% endif %}
   {% endblock %}
 </li>
+
+{% block scripts %}
+<script>
+    const showButton = document.getElementById("requestData");
+    const favDialog = document.getElementById("favDialog");
+    const outputBox = document.querySelector("output");
+    const selectEl = favDialog.querySelector("select");
+    const confirmBtn = favDialog.querySelector("#confirmBtn");
+
+    // authentification and authorization to request data button 
+    // flash message on successful request
+
+    const dataId = document.querySelector("#requestData").getAttribute("data-id");
+    let data = sessionStorage.getItem(dataId);
+    if (data) {
+        showButton.style.display = "none";
+    }
+
+    // "Show the dialog" button opens the <dialog> modally
+    showButton.addEventListener("click", () => {
+    favDialog.showModal();
+    });
+
+    // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
+    favDialog.addEventListener("close", (e) => {
+    outputBox.value =
+        favDialog.returnValue === "default"
+        ? "No return value."
+        : `ReturnValue: ${favDialog.returnValue}.`; // Have to check for "default" rather than empty string
+    });
+
+    // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
+    confirmBtn.addEventListener("click", (event) => {
+        event.preventDefault(); // We don't want to submit this fake form
+        console.log(dataId);
+        sessionStorage.setItem(dataId, dataId);
+        showButton.style.display = "none";
+        favDialog.close(); // Have to send the select box value here.
+    });
+
+</script>
+{% endblock %}
+
+{% block styles %}
+
+<style>
+  dialog:not([open]) {
+    display: none;
+  } 
+  ::backdrop {
+    background-color: black;
+    opacity: 0.70;
+  }
+    dialog {
+        background-color: white;
+        border: solid black 1px;
+        box-shadow: 0px 0px 10px black;
+        border-radius: 5px;
+        padding: 1em;
+    }
+</style>
+    
+    {% endblock %}
