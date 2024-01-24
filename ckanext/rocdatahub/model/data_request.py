@@ -8,10 +8,10 @@ from ckan.model.domain_object import DomainObject
 from typing import Any, Collection, Optional
 from sqlalchemy.ext.associationproxy import association_proxy
 
-__all__ = ['UserExtra', 'user_extra_table']
+__all__ = ['DataRequest', 'data_request_table']
 
-user_extra_table = Table(
-    'user_extra',
+data_request_table = Table(
+    'data_request',
     meta.metadata,
     Column('id', types.UnicodeText, primary_key=True, default=types.make_uuid),
     Column(
@@ -19,39 +19,40 @@ user_extra_table = Table(
         types.UnicodeText,
         ForeignKey('user.id', onupdate='CASCADE', ondelete='CASCADE'),
         nullable=False,
-        unique=True,
     ),
-    Column('country', types.UnicodeText, nullable=True),
-    Column('affiliation', types.UnicodeText, nullable=True),
-    Column('agreement', types.Boolean, nullable=True),
-    Column('advertisement', types.Boolean, nullable=True),
-    Column('reviewer', types.Boolean, nullable=True),
+    Column(
+        'dataset', 
+        types.UnicodeText, 
+        ForeignKey('package.name', onupdate='CASCADE', ondelete='CASCADE'), 
+        nullable=False
+    ),
+    Column('status', types.String, nullable=False),
+    Column('requested_at', types.DateTime, nullable=False),
+    Column('approved_at', types.DateTime, nullable=True),
 )
 
-class UserExtra(DomainObject):
+class DataRequest(DomainObject):
     id: Mapped[str]
     user_id: Mapped[str]
-    country: Mapped[Optional[str]]
-    affiliation: Mapped[Optional[str]]
-    agreement: Mapped[str]
-    advertisement: Mapped[Optional[str]]
-    reviewer: Mapped[Optional[str]]
+    dataset: Mapped[str]
+    status: Mapped[str]
+    requested_at: Mapped[str]
+    approved_at: Mapped[Optional[str]]
 
     @classmethod
     def create(cls, id, user_id, country, affiliation, agreement, advertisement, reviewer):
         """
-        Create a new record in the UserExtra table.
+        Create a new record in the DataRequest table.
 
-        :param id: a new UserExtra string
-        :param user_id: the id of the user this UserExtra represents
-        :param country: the country of residence of the user
-        :param affiliation: the institutional affiliation of the user
-        :param agreement: agreement to the terms of use
-        :param advertisement: allow to receive advertisement
-        :param reviewer: agree to be a reviewer
+        :param id: a new DataRequest string
+        :param user_id: the id of the user this DataRequest represents
+        :param dataset: the requested dataset
+        :param status: the status of the request
+        :param requested_at: request timestamp
+        :param approved_at: approval timestamp
         :return: the newly created record object
         """
-        new_record = UserExtra(
+        new_record = DataRequest(
             id=id, user_id=user_id, country=country, affiliation=affiliation, agreement=agreement, advertisement=advertisement, reviewer=reviewer
         )
         Session.add(new_record)
@@ -59,45 +60,45 @@ class UserExtra(DomainObject):
         return new_record
 
     @classmethod
-    def read_user_extra(cls, id):
+    def read_data_request(cls, id):
         """
-        Retrieve a record with a given UserExtra.
+        Retrieve a record with a given DataRequest.
 
-        :param id: the UserExtra string
+        :param id: the DataRequest string
         :return: the record object
         """
-        return Session.query(UserExtra).get(id)
+        return Session.query(DataRequest).get(id)
 
     @classmethod
-    def read_user(cls, user_id):
+    def read_user_data_request(cls, user_id):
         """
         Retrieve a record associated with a given user.
 
         :param user_id: the id of the user
-        :param create_if_none: generate a new UserExtra and add a record if no record is found for the
+        :param create_if_none: generate a new DataRequest and add a record if no record is found for the
                                given user
         :return: the record object
         """
 
-        record = Session.query(UserExtra).filter(UserExtra.user_id == user_id).first()
+        record = Session.query(DataRequest).filter(DataRequest.user_id == user_id).first()
         return record
 
     @classmethod
-    def update_user_extra(cls, id, **kwargs):
+    def update_data_request(cls, id, **kwargs):
         """
-        Update the package_id and/or published fields of a record with a given UserExtra.
+        Update the package_id and/or published fields of a record with a given DataRequest.
 
-        :param id: the UserExtra string
+        :param id: the DataRequest string
         :param kwargs: the values to be updated
         :return: the updated record object
         """
         update_dict = {k: v for k, v in kwargs.items() if k in cls.cols}
-        Session.query(UserExtra).filter(UserExtra.id == id).update(update_dict)
+        Session.query(DataRequest).filter(DataRequest.id == id).update(update_dict)
         Session.commit()
-        return cls.read_user_extra(id)
+        return cls.read_data_request(id)
 
     @classmethod
-    def update_user(cls, user_id, **kwargs):
+    def update_user_data_request(cls, user_id, **kwargs):
         """
         Update the user_id and/or published fields of a record associated with a
         given user.
@@ -107,19 +108,19 @@ class UserExtra(DomainObject):
         :return: the updated record object
         """
         update_dict = {k: v for k, v in kwargs.items() if k in cls.cols}
-        Session.query(UserExtra).filter(UserExtra.user_id == user_id).update(update_dict)
+        Session.query(DataRequest).filter(DataRequest.user_id == user_id).update(update_dict)
         Session.commit()
         return cls.read_user(user_id)
 
     @classmethod
-    def delete_user_extra(cls, id):
+    def delete_data_request(cls, id):
         """
-        Delete the record with a given UserExtra.
+        Delete the record with a given DataRequest.
 
-        :param id: the UserExtra string
+        :param id: the DataRequest string
         :return: True if a record was deleted, False if not
         """
-        to_delete = cls.read_user_extra(id)
+        to_delete = cls.read_data_request(id)
         if to_delete is not None:
             Session.delete(to_delete)
             Session.commit()
@@ -128,7 +129,7 @@ class UserExtra(DomainObject):
             return False
 
     @classmethod
-    def delete_user(cls, user_id):
+    def delete_user_data_request(cls, user_id):
         """
         Delete the record associated with a given user.
 
@@ -145,21 +146,20 @@ class UserExtra(DomainObject):
 
 
 meta.mapper(
-    UserExtra,
-    user_extra_table,
+    DataRequest,
+    data_request_table,
     properties={
         'user': relation(
             User,
-            backref=backref('user_extra', cascade='all, delete-orphan'),
-            primaryjoin=user_extra_table.c.user_id.__eq__(User.id),
+            backref=backref('data_request', cascade='all, delete-orphan'),
+            primaryjoin=data_request_table.c.user_id.__eq__(User.id),
         )
     },
 )
 
 
 def _create_extra(key: str, value: Any):
-    return UserExtra(key=str(key), value=value)
+    return DataRequest(key=str(key), value=value)
 
 User.extras = association_proxy(
     '_extras', 'value', creator=_create_extra)
-
