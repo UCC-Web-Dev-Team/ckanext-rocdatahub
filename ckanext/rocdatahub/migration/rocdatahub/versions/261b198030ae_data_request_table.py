@@ -22,7 +22,7 @@ def upgrade():
         u"data_request",
         sa.Column(u"id", sa.UnicodeText, primary_key=True),
         sa.Column(u"user_id", sa.UnicodeText, sa.ForeignKey(u"user.id")),
-        sa.Column(u"dataset", sa.UnicodeText, sa.ForeignKey(u"package.name")),
+        sa.Column(u"package_id", sa.UnicodeText, sa.ForeignKey(u"package.id")),
         sa.Column(u"status", sa.String, nullable=True),
         sa.Column(u"requested_at", sa.DateTime, server_default=func.now()),
         sa.Column(u"approved_at", sa.DateTime, nullable=True),

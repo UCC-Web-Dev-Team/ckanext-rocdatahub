@@ -21,9 +21,9 @@ data_request_table = Table(
         nullable=False,
     ),
     Column(
-        'dataset', 
+        'package_id', 
         types.UnicodeText, 
-        ForeignKey('package.name', onupdate='CASCADE', ondelete='CASCADE'), 
+        ForeignKey('package.id', onupdate='CASCADE', ondelete='CASCADE'), 
         nullable=False
     ),
     Column('status', types.String, nullable=False),

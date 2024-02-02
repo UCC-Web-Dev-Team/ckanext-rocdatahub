@@ -1,5 +1,6 @@
 from flask import Blueprint
 from ckan.plugins.toolkit import render
+# from ckanext.rocdatahub.model.data_request import DataRequest
 
 rocdatahub = Blueprint(
     "rocdatahub", __name__)
@@ -29,6 +30,12 @@ def country(country):
 
 # rocdatahub.add_url_rule(
 #     "/rocdatahub/page", view_func=page)
+
+# rocdatahub.add_url_rule(
+#     "/data-request", 
+#     "create",
+#     DataRequest.create,
+#     methods=["POST"])
 
 
 def get_blueprints():
